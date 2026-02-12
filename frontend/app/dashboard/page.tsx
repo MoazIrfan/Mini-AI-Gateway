@@ -2,11 +2,11 @@
 
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
-import { Header } from "@/components/dashboard/Header"
-import { CreditsCard } from "@/components/dashboard/CreditsCard"
-import { ApiKeyManager } from "@/components/dashboard/ApiKeyManager"
-import { Playground } from "@/components/dashboard/Playground"
-import { RequestLogs } from "@/components/dashboard/RequestLogs"
+import Header from "@/components/ui/dashboard/Header"
+import CreditsCard from "@/components/ui/dashboard/CreditsCard"
+import ApiKeyManager from "@/components/ui/dashboard/ApiKeyManager"
+import Playground from "@/components/ui/dashboard/Playground"
+import RequestLogs from "@/components/ui/dashboard/RequestLogs"
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL
 
@@ -122,6 +122,7 @@ export default function DashboardPage() {
         setApiKey(data.apiKey)
         setMaskedKey(data.maskedKey)
         setHasKey(true)
+
         localStorage.setItem("currentApiKey", data.apiKey)
         alert(`API Key generated! Copy it now:\n\n${data.apiKey}\n\nYou won't be able to see it again.`)
       }
@@ -166,10 +167,12 @@ export default function DashboardPage() {
 
       setResponse(data.reply)
       
+      // Update credits
       if (user) {
         setUser({ ...user, credits: data.credits_remaining })
       }
       
+      // Refresh logs
       fetchLogs()
     } catch (err) {
       setError("Failed to send request")
@@ -196,7 +199,7 @@ export default function DashboardPage() {
   return (
     <div className="min-h-screen bg-gray-50 p-6">
       <div className="mx-auto max-w-6xl space-y-6">
-        <Header user={user} onLogout={handleLogout} />
+        <Header email={user.email} onLogout={handleLogout} />
         
         <CreditsCard credits={user.credits} />
         
@@ -204,19 +207,19 @@ export default function DashboardPage() {
           hasKey={hasKey}
           maskedKey={maskedKey}
           apiKey={apiKey}
-          onGenerate={generateApiKey}
-          onCopy={copyToClipboard}
+          onGenerateKey={generateApiKey}
+          onCopyToClipboard={copyToClipboard}
         />
         
         <Playground
           model={model}
           prompt={prompt}
           response={response}
-          error={error}
           loading={loading}
+          error={error}
           onModelChange={setModel}
           onPromptChange={setPrompt}
-          onSend={handleSendPrompt}
+          onSendPrompt={handleSendPrompt}
         />
         
         <RequestLogs logs={logs} />
