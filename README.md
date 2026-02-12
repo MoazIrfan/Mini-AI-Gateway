@@ -1,6 +1,6 @@
-# Mini AI API Gateway
+# Mini AI Gateway
 
-[![📟](https://raw.githubusercontent.com/MoazIrfan/Mini-AI-Gateway/main/.github/mini%20api%20gatway%20.gif)](./../../)
+[![📟](https://raw.githubusercontent.com/MoazIrfan/Mini-AI-Gateway/main/.github/mini-api-gateway.gif)](./../../)
 
 
 ## Installation
