@@ -124,17 +124,14 @@ export default function DashboardPage() {
         setHasKey(true)
 
         localStorage.setItem("currentApiKey", data.apiKey)
-        alert(`API Key generated! Copy it now:\n\n${data.apiKey}\n\nYou won't be able to see it again.`)
       }
     } catch (err) {
       console.error("Failed to generate API key:", err)
-      alert("Failed to generate API key")
     }
   }
 
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text)
-    alert("Copied to clipboard!")
   }
 
   const handleSendPrompt = async () => {

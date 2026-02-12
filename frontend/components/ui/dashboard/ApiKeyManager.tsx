@@ -1,9 +1,10 @@
 "use client"
 
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Copy, Key } from "lucide-react"
+import { Copy, Key, Check } from "lucide-react"
 
 interface ApiKeyManagerProps {
   hasKey: boolean
@@ -20,6 +21,16 @@ export default function ApiKeyManager({
   onGenerateKey,
   onCopyToClipboard,
 }: ApiKeyManagerProps) {
+  const [copied, setCopied] = useState(false)
+
+  const handleCopy = (text: string) => {
+    onCopyToClipboard(text)
+    setCopied(true)
+    setTimeout(() => {
+      setCopied(false)
+    }, 2000)
+  }
+
   return (
     <Card>
       <CardHeader>
@@ -36,10 +47,10 @@ export default function ApiKeyManager({
               <Button
                 variant="outline"
                 size="icon"
-                onClick={() => onCopyToClipboard(apiKey || maskedKey)}
+                onClick={() => handleCopy(apiKey || maskedKey)}
                 disabled={!apiKey}
               >
-                <Copy className="h-4 w-4" />
+                {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
               </Button>
             </div>
             {!apiKey && (
