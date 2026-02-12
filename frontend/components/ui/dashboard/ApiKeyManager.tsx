@@ -43,7 +43,7 @@ export default function ApiKeyManager({
         {hasKey ? (
           <div className="space-y-3">
             <div className="flex items-center gap-2">
-              <Input value={maskedKey} readOnly className="font-mono" />
+              <Input value={maskedKey} readOnly className="font-mono focus:outline-none focus:ring-0 focus-visible:ring-0 focus-visible:ring-offset-0 focus:border-input focus-visible:border-input focus:shadow-none focus-visible:shadow-none" />
               <Button
                 variant="outline"
                 size="icon"

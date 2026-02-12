@@ -51,6 +51,7 @@ export default function Playground({
         <div className="space-y-2">
           <label className="text-sm font-medium">Prompt</label>
           <Textarea
+            className="focus:outline-none focus:ring-0 focus-visible:ring-0 focus-visible:ring-offset-0 focus:border-input focus-visible:border-input focus:shadow-none focus-visible:shadow-none"
             placeholder="Enter your prompt here..."
             value={prompt}
             onChange={(e) => onPromptChange(e.target.value)}
