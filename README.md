@@ -1,6 +1,6 @@
 # Mini AI Gateway
 
-A lightweight, full-stack API gateway application for managing AI requests with authentication, credit-based usage tracking, and API key management. Built with modern web technologies for developers who need a simple yet powerful way to control and monitor AI API access.
+A lightweight, full-stack API gateway application for managing AI requests with authentication, credit-based usage tracking, and API key management.
 
 
 [![📟](https://raw.githubusercontent.com/MoazIrfan/Mini-AI-Gateway/main/.github/mini-api-gateway.gif)](./../../)
